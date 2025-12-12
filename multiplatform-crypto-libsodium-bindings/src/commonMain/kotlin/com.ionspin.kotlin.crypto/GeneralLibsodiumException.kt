@@ -2,7 +2,7 @@ package com.ionspin.kotlin.crypto
 
 import com.ionspin.kotlin.crypto.util.isLibsodiumSuccessCode
 
-class GeneralLibsodiumException : RuntimeException("Libsodium reported error! Returned value was -1") {
+class GeneralLibsodiumException(message: String) : RuntimeException(message) {
     companion object {
         /**
          * Throws a [GeneralLibsodiumException] if the return code is not
@@ -12,7 +12,7 @@ class GeneralLibsodiumException : RuntimeException("Libsodium reported error! Re
          */
         fun Int.ensureLibsodiumSuccess() {
             if (!isLibsodiumSuccessCode()) {
-                throw GeneralLibsodiumException()
+                throw GeneralLibsodiumException("Libsodium reported error! Returned value was -1")
             }
         }
     }
