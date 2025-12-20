@@ -12,7 +12,7 @@ actual object LibsodiumInitializer {
 
     actual suspend fun initialize() {
         if (isPlatformInitialized.compareAndSet(0, 1)) {
-            sodium_init().ensureLibsodiumSuccess()
+            sodium_init().ensureInitSuccess()
         }
 
 
@@ -20,7 +20,7 @@ actual object LibsodiumInitializer {
 
     actual fun initializeWithCallback(done: () -> Unit) {
         if (isPlatformInitialized.compareAndSet(0, 1)) {
-            sodium_init().ensureLibsodiumSuccess()
+            sodium_init().ensureInitSuccess()
         }
         done()
     }
